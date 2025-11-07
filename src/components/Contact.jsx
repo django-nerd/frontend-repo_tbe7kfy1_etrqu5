@@ -1,57 +1,75 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
 import { Mail, Linkedin, Instagram } from 'lucide-react';
+import { motion } from 'framer-motion';
 
-const Contact = () => {
-  const [status, setStatus] = useState('');
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setStatus('Thanks! Your message has been noted.');
-  };
-
+export default function Contact() {
   return (
-    <section id="contact" className="py-20 bg-[linear-gradient(180deg,#f7fbff_0%,#ffffff_100%)]">
-      <div className="mx-auto w-full max-w-6xl px-6">
+    <section id="contact" className="relative w-full bg-gradient-to-b from-[#edf4ff] via-[#e9f3ff] to-white py-20">
+      <div className="relative mx-auto max-w-5xl px-6">
         <motion.h2
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
-          className="text-3xl md:text-4xl font-bold text-gray-900"
+          className="text-3xl font-semibold text-[#0b1220] sm:text-4xl"
         >
-          Contact
+          Get in touch
         </motion.h2>
 
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8">
-          <form onSubmit={handleSubmit} className="rounded-2xl border border-white/40 bg-white/70 backdrop-blur p-6 shadow-sm">
-            <div className="grid grid-cols-1 gap-4">
-              <input required type="text" placeholder="Your name" className="w-full rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#0b1220]" />
-              <input required type="email" placeholder="Email address" className="w-full rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#0b1220]" />
-              <textarea required placeholder="Your message" rows={4} className="w-full rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#0b1220]" />
-              <button type="submit" className="rounded-full bg-[#0b1220] text-white px-6 py-3 font-semibold hover:bg-[#0e1730] transition">Send Message</button>
-              {status && <p className="text-green-600 text-sm">{status}</p>}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mt-8 rounded-2xl border border-[#4f86c6]/20 bg-white/60 p-6 shadow-sm backdrop-blur-md"
+        >
+          <form className="grid grid-cols-1 gap-4 sm:grid-cols-2" onSubmit={(e) => e.preventDefault()}>
+            <label className="block">
+              <span className="sr-only">Name</span>
+              <input
+                type="text"
+                placeholder="Your name"
+                className="w-full rounded-xl border border-black/10 bg-white/80 px-4 py-3 text-sm outline-none placeholder:text-black/50 focus:ring-2 focus:ring-[#4f86c6]"
+              />
+            </label>
+            <label className="block">
+              <span className="sr-only">Email</span>
+              <input
+                type="email"
+                placeholder="Email address"
+                className="w-full rounded-xl border border-black/10 bg-white/80 px-4 py-3 text-sm outline-none placeholder:text-black/50 focus:ring-2 focus:ring-[#4f86c6]"
+              />
+            </label>
+            <label className="block sm:col-span-2">
+              <span className="sr-only">Message</span>
+              <textarea
+                placeholder="Tell me about your project..."
+                rows={4}
+                className="w-full rounded-xl border border-black/10 bg-white/80 px-4 py-3 text-sm outline-none placeholder:text-black/50 focus:ring-2 focus:ring-[#4f86c6]"
+              />
+            </label>
+            <div className="sm:col-span-2">
+              <button
+                type="submit"
+                className="w-full rounded-xl bg-gradient-to-r from-[#4f86c6] to-[#163060] px-5 py-3 text-sm font-medium text-white shadow-lg shadow-black/20 transition hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-[#4f86c6]/60"
+              >
+                Send Message
+              </button>
             </div>
           </form>
 
-          <div className="rounded-2xl border border-white/40 bg-white/70 backdrop-blur p-6 shadow-sm">
-            <div className="space-y-4">
-              <a href="mailto:richojayandika@example.com" className="flex items-center gap-3 text-gray-800 hover:text-gray-900 transition">
-                <Mail size={20} /> richojayandika@example.com
-              </a>
-              <a href="https://www.linkedin.com" target="_blank" rel="noreferrer" className="flex items-center gap-3 text-gray-800 hover:text-gray-900 transition">
-                <Linkedin size={20} /> LinkedIn
-              </a>
-              <a href="https://www.instagram.com" target="_blank" rel="noreferrer" className="flex items-center gap-3 text-gray-800 hover:text-gray-900 transition">
-                <Instagram size={20} /> Instagram
-              </a>
-            </div>
-            <p className="mt-6 text-gray-600 text-sm">Open to opportunities in digital marketing, e-commerce, and growth-focused roles.</p>
+          <div className="mt-6 flex flex-wrap items-center gap-3">
+            <a href="mailto:hello@example.com" className="inline-flex items-center gap-2 rounded-full bg-white/70 px-3 py-1.5 text-sm text-[#0b1220] ring-1 ring-black/10">
+              <Mail size={16} /> Email
+            </a>
+            <a href="#" className="inline-flex items-center gap-2 rounded-full bg-white/70 px-3 py-1.5 text-sm text-[#0b1220] ring-1 ring-black/10">
+              <Linkedin size={16} /> LinkedIn
+            </a>
+            <a href="#" className="inline-flex items-center gap-2 rounded-full bg-white/70 px-3 py-1.5 text-sm text-[#0b1220] ring-1 ring-black/10">
+              <Instagram size={16} /> Instagram
+            </a>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
-};
-
-export default Contact;
+}

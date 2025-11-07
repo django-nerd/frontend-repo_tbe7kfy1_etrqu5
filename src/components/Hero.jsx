@@ -1,62 +1,74 @@
-import React from 'react';
-import Spline from '@splinetool/react-spline';
 import { motion } from 'framer-motion';
 
-const Hero = () => {
+const HERO_BG = "https://cdn.dribbble.com/userupload/16537236/file/original-3c9baf8044faac370974ead6e9a41217.jpg?resize=1504x1003&vertical=center";
+
+export default function Hero() {
   return (
-    <section id="home" className="relative h-[90vh] w-full overflow-hidden">
+    <section className="relative min-h-[88vh] w-full overflow-hidden bg-[#0b1220]">
+      {/* Background cover image */}
       <div className="absolute inset-0">
-        <Spline scene="https://prod.spline.design/VJLoxp84lCdVfdZu/scene.splinecode" style={{ width: '100%', height: '100%' }} />
+        <img
+          src={HERO_BG}
+          alt="Blue to purple mottled gradient tech background"
+          className="h-full w-full object-cover"
+          loading="eager"
+          decoding="async"
+        />
       </div>
 
-      {/* Arctic Flow overlay to blend with 3D scene without blocking interactions */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0b1220]/50 via-[#163060]/30 to-[#e9f3ff]/60" />
-        <div className="absolute inset-0 bg-gradient-to-tr from-white/30 via-transparent to-transparent" />
-      </div>
+      {/* Arctic Flow gradient overlay (non-blocking) */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#0b1220]/70 via-[#163060]/60 to-[#4f86c6]/50" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0b1220]/70 via-transparent to-transparent" />
 
-      <div className="relative z-10 h-full flex items-center">
-        <div className="mx-auto w-full max-w-6xl px-6">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-4xl md:text-6xl font-extrabold tracking-tight text-gray-900"
-          >
-            Richo Jayandika
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.1 }}
-            className="mt-4 text-lg md:text-2xl text-gray-700 max-w-2xl"
-          >
-            Digital Marketing & E-Commerce Specialist
-          </motion.p>
+      {/* Content */}
+      <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center justify-center px-6 py-24 text-center text-white">
+        <motion.span
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          className="mb-4 inline-flex items-center rounded-full bg-white/10 px-4 py-1.5 text-sm backdrop-blur-md ring-1 ring-white/15"
+        >
+          Richo Jayandika · Software Engineering × Digital Marketing
+        </motion.span>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.2 }}
-            className="mt-8 flex flex-wrap items-center gap-4"
+        <motion.h1
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: 'easeOut', delay: 0.05 }}
+          className="text-balance text-4xl font-semibold leading-tight sm:text-5xl md:text-6xl"
+        >
+          Building modern experiences at the intersection of code and commerce
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: 'easeOut', delay: 0.12 }}
+          className="mt-5 max-w-2xl text-pretty text-base text-white/85 sm:text-lg"
+        >
+          I craft performant web apps and data‑driven growth campaigns for brands in the digital economy.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: 'easeOut', delay: 0.18 }}
+          className="mt-8 flex flex-wrap items-center justify-center gap-4"
+        >
+          <a
+            href="#portfolio"
+            className="rounded-xl bg-gradient-to-r from-[#4f86c6] to-[#163060] px-5 py-3 text-sm font-medium text-white shadow-lg shadow-black/20 transition hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-white/40"
           >
-            <a
-              href="#portfolio"
-              className="inline-flex items-center rounded-full bg-gray-900 text-white px-6 py-3 text-sm md:text-base font-semibold hover:bg-gray-800 transition"
-            >
-              View Work
-            </a>
-            <a
-              href="#contact"
-              className="inline-flex items-center rounded-full border border-gray-300 px-6 py-3 text-sm md:text-base font-semibold text-gray-900 hover:bg-gray-50 transition"
-            >
-              Contact Me
-            </a>
-          </motion.div>
-        </div>
+            View Work
+          </a>
+          <a
+            href="#contact"
+            className="rounded-xl border border-white/25 bg-white/10 px-5 py-3 text-sm font-medium text-white backdrop-blur-md transition hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/40"
+          >
+            Get in Touch
+          </a>
+        </motion.div>
       </div>
     </section>
   );
-};
-
-export default Hero;
+}

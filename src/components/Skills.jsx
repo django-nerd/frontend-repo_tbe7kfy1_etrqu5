@@ -1,62 +1,60 @@
-import React from 'react';
+import { Code, BarChart3, Megaphone, ShoppingBag, Globe, Rocket } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { Code, Rocket, BarChart3, Globe, Megaphone, ShoppingBag } from 'lucide-react';
 
 const skills = [
-  { icon: Code, title: 'Web Development', items: ['HTML', 'CSS/Tailwind', 'JavaScript', 'React'] },
-  { icon: BarChart3, title: 'SEO & Analytics', items: ['On-Page SEO', 'Keyword Research', 'Google Analytics', 'Search Console'] },
-  { icon: Megaphone, title: 'Performance Marketing', items: ['Facebook Ads', 'Instagram Ads', 'TikTok Ads', 'A/B Testing'] },
-  { icon: ShoppingBag, title: 'E-Commerce Ops', items: ['Shopify', 'Storefront UX', 'Conversion Optimization', 'Email Marketing'] },
-  { icon: Globe, title: 'Content & Social', items: ['Content Strategy', 'Social Media', 'Branding', 'Copywriting'] },
-  { icon: Rocket, title: 'Growth Mindset', items: ['Data-Driven', 'Creative', 'Problem Solving', 'Collaboration'] },
+  {
+    icon: Code,
+    title: 'Web Engineering',
+    desc: 'React, Next.js, Node, REST — building robust, scalable web apps with clean architectures.',
+  },
+  {
+    icon: BarChart3,
+    title: 'Analytics & CRO',
+    desc: 'GA4, Looker, A/B testing — turning insights into meaningful conversion lifts.',
+  },
+  { icon: Megaphone, title: 'Performance Marketing', desc: 'Meta, Google, TikTok — full-funnel campaigns, creative testing, and ROAS focus.' },
+  { icon: ShoppingBag, title: 'E‑Commerce', desc: 'Shopify/WA flows, catalog ops, and automation for growth-ready stores.' },
+  { icon: Globe, title: 'SEO & Content', desc: 'Technical SEO, content systems, and modern publishing workflows.' },
+  { icon: Rocket, title: 'Go‑to‑Market', desc: 'Positioning, messaging, and launches that resonate with target users.' },
 ];
 
-const Card = ({ icon: Icon, title, items }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.2 }}
-    transition={{ duration: 0.5 }}
-    className="group rounded-2xl border border-white/30 bg-gradient-to-b from-[#e6f0ff] to-white p-6 shadow-sm hover:shadow-md transition-shadow"
-  >
-    <div className="flex items-center gap-3">
-      <div className="rounded-xl bg-[#0b1220] text-white p-3">
-        <Icon size={22} />
-      </div>
-      <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
-    </div>
-    <ul className="mt-4 space-y-1 text-gray-700">
-      {items.map((item) => (
-        <li key={item} className="flex items-center gap-2">
-          <span className="h-1.5 w-1.5 rounded-full bg-[#0b1220] inline-block" />
-          {item}
-        </li>
-      ))}
-    </ul>
-  </motion.div>
-);
-
-const Skills = () => {
+export default function Skills() {
   return (
-    <section id="skills" className="py-20 bg-[linear-gradient(180deg,#eaf3ff_0%,#f7fbff_100%)]">
-      <div className="mx-auto w-full max-w-6xl px-6">
+    <section id="skills" className="relative w-full bg-gradient-to-b from-white via-[#e9f3ff] to-[#edf4ff] py-20">
+      <div className="relative mx-auto max-w-6xl px-6">
         <motion.h2
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
-          className="text-3xl md:text-4xl font-bold text-gray-900"
+          className="text-3xl font-semibold text-[#0b1220] sm:text-4xl"
         >
-          Skills
+          Skills & Focus
         </motion.h2>
-        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {skills.map((s) => (
-            <Card key={s.title} icon={s.icon} title={s.title} items={s.items} />
-          ))}
+        <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {skills.map((s, i) => {
+            const Icon = s.icon;
+            return (
+              <motion.div
+                key={s.title}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5, delay: i * 0.05 }}
+                className="rounded-2xl border border-white/60 bg-gradient-to-b from-[#e6f0ff] to-white p-6 shadow-sm shadow-[#0b1220]/5"
+              >
+                <div className="flex items-center gap-3">
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[#0b1220] text-white shadow-md shadow-black/20">
+                    <Icon size={20} />
+                  </span>
+                  <h3 className="text-lg font-semibold text-[#0b1220]">{s.title}</h3>
+                </div>
+                <p className="mt-3 text-sm leading-relaxed text-[#163060]/90">{s.desc}</p>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
   );
-};
-
-export default Skills;
+}
