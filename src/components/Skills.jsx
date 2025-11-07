@@ -17,10 +17,10 @@ const Card = ({ icon: Icon, title, items }) => (
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, amount: 0.2 }}
     transition={{ duration: 0.5 }}
-    className="group rounded-2xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow"
+    className="group rounded-2xl border border-white/30 bg-gradient-to-b from-[#e6f0ff] to-white p-6 shadow-sm hover:shadow-md transition-shadow"
   >
     <div className="flex items-center gap-3">
-      <div className="rounded-xl bg-gray-900 text-white p-3">
+      <div className="rounded-xl bg-[#0b1220] text-white p-3">
         <Icon size={22} />
       </div>
       <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
@@ -28,7 +28,7 @@ const Card = ({ icon: Icon, title, items }) => (
     <ul className="mt-4 space-y-1 text-gray-700">
       {items.map((item) => (
         <li key={item} className="flex items-center gap-2">
-          <span className="h-1.5 w-1.5 rounded-full bg-gray-900 inline-block" />
+          <span className="h-1.5 w-1.5 rounded-full bg-[#0b1220] inline-block" />
           {item}
         </li>
       ))}
@@ -38,7 +38,7 @@ const Card = ({ icon: Icon, title, items }) => (
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-20 bg-gray-50">
+    <section id="skills" className="py-20 bg-[linear-gradient(180deg,#eaf3ff_0%,#f7fbff_100%)]">
       <div className="mx-auto w-full max-w-6xl px-6">
         <motion.h2
           initial={{ opacity: 0, y: 12 }}

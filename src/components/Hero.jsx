@@ -9,7 +9,11 @@ const Hero = () => {
         <Spline scene="https://prod.spline.design/VJLoxp84lCdVfdZu/scene.splinecode" style={{ width: '100%', height: '100%' }} />
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/60 to-white pointer-events-none" />
+      {/* Arctic Flow overlay to blend with 3D scene without blocking interactions */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0b1220]/50 via-[#163060]/30 to-[#e9f3ff]/60" />
+        <div className="absolute inset-0 bg-gradient-to-tr from-white/30 via-transparent to-transparent" />
+      </div>
 
       <div className="relative z-10 h-full flex items-center">
         <div className="mx-auto w-full max-w-6xl px-6">

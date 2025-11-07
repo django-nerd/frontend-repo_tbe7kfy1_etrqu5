@@ -26,7 +26,7 @@ const Portfolio = () => {
   const [active, setActive] = useState(null);
 
   return (
-    <section id="portfolio" className="py-20 bg-white">
+    <section id="portfolio" className="py-20 bg-[#edf4ff]">
       <div className="mx-auto w-full max-w-6xl px-6">
         <motion.h2
           initial={{ opacity: 0, y: 12 }}
@@ -46,7 +46,7 @@ const Portfolio = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5 }}
-              className="group relative overflow-hidden rounded-2xl bg-gray-100 cursor-pointer"
+              className="group relative overflow-hidden rounded-2xl bg-white/50 backdrop-blur border border-white/40 cursor-pointer shadow-sm hover:shadow-md"
               onClick={() => setActive(idx)}
             >
               <img src={p.image} alt={p.title} className="h-56 w-full object-cover transition-transform duration-500 group-hover:scale-105" />
